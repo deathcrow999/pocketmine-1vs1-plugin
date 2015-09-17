@@ -40,7 +40,7 @@ class EventsManager implements Listener{
 		$deadPlayer = $event->getEntity();
 		$arena = $this->arenaManager->getPlayerArena($deadPlayer);
 		$event->setDrops([]);
-		$event->setKeepInventory(false);
+		$event->setKeepInventory(true);
 		if($arena != NULL){
 			$arena->onPlayerDeath($deadPlayer);
 		}
@@ -56,9 +56,9 @@ class EventsManager implements Listener{
 			if($signLines[0]== OneVsOne::SIGN_TITLE){
 				if($event->getPlayer()->isOp()){
 					$this->arenaManager->addSign($signTile);
-					$event->setLine(1,"-Waiting: "  . $this->arenaManager->getNumberOfPlayersInQueue());
-					$event->setLine(2,"-Arenas:" . $this->arenaManager->getNumberOfFreeArenas());
-					$event->setLine(3,"-+===+-");
+					$event->setLine(1,"§b-Waiting: "  . $this->arenaManager->getNumberOfPlayersInQueue());
+					$event->setLine(2,"§b-Arenas:" . $this->arenaManager->getNumberOfFreeArenas());
+					$event->setLine(3,"§6Join");
 					return true;
 				}
 			}
